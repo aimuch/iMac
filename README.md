@@ -1,4 +1,5 @@
 # Mac Config
+*记录Mac日常使用情况*
 - [安装Homebrew](./src/0.md)
 - [删除右键菜单重复项目](./src/1.md)
 - [Mac删除/卸载自己安装的python](./src/2.md)
@@ -12,3 +13,13 @@
   - [安装Vundle.vim管理插件](./src/4.md#安装vundle.vim管理插件)
   - [VIM安装YouCompleteMe](./src/4.md#vim安装youcompleteme)
   - [vimrc最终配置](./src/4.md#vimrc最终配置)
+
+
+## TODO
+- [x] brew
+- [x] shell
+- [x] vim
+  - [x] ~/.vimrc
+  - [x] oh-my-zsh
+  - [x] zsh-syntax-highlighting
+- [ ] ...
