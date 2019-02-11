@@ -10,7 +10,7 @@
   - [安装zsh-syntax-highlighting](./src/4.md#安装zsh-syntax-highlighting)
   - [VIM手动配置](./src/4.md#vim手动配置)
   - [VIMRC自动配置VIM](./src/4.md#vimrc自动配置vim)
-  - [安装Vundle.vim管理插件](./src/4.md#安装vundle.vim管理插件)
+  - [安装Vundle管理插件](./src/4.md#安装vundle管理插件)
   - [VIM安装YouCompleteMe](./src/4.md#vim安装youcompleteme)
   - [vimrc最终配置](./src/4.md#vimrc最终配置)
 
