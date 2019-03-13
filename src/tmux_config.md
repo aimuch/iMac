@@ -1,5 +1,5 @@
-# Tmux Config
-- [Tmux Config](#tmux-config)
+# Tmux
+- [Tmux](#tmux)
     - [Tmux安装](#tmux%E5%AE%89%E8%A3%85)
     - [Tmux配置](#tmux%E9%85%8D%E7%BD%AE)
 

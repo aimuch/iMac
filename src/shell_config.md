@@ -1,13 +1,13 @@
 # Mac下的shell配置   
-- [zsh设置为默认shell](#zsh设置为默认shell)
-- [安装oh-my-zsh](#安装oh-my-zsh)
-- [安装colorls](#安装colorls)
-- [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)
-- [VIM手动配置](#vim手动配置)
-- [VIMRC自动配置VIM](#vimrc自动配置vim)
-- [安装Vundle管理插件](#安装vundle管理插件)
-- [VIM安装YouCompleteMe](#vim安装youcompleteme)
-- [vimrc最终配置](#vimrc最终配置)
+- [**zsh**设置为默认shell](#zsh设置为默认shell)
+- [安装**oh-my-zsh**](#安装oh-my-zsh)
+- [安装**colorls**](#安装colorls)
+- [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)
+- [VIM**手动**配置](#vim手动配置)
+- [VIMRC**自动**配置VIM](#vimrc自动配置vim)
+- [安装**Vundle**管理插件](#安装vundle管理插件)
+- [VIM安装**YouCompleteMe**](#vim安装youcompleteme)
+- [vimrc**最终配置**](#vimrc最终配置)
 
 
 
@@ -37,13 +37,13 @@ chsh -s /bin/bash
 ---
 ## 安装oh-my-zsh
 - via curl   
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```   
+    ```bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    ```   
 - via wget   
-```bash
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-```
+    ```bash
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    ```
 运行上述命令以后`~/.zshrc`会自动配置为:
 ```vim
 # If you come from bash you might have to change your $PATH.
@@ -264,40 +264,41 @@ After:  ![png](../img/4_6.png)
 
 ### **安装方法**:
 - ### 安装到`Oh-my-zsh`   
-1. Clone this repository in oh-my-zsh's plugins directory:   
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-2. Activate the plugin in `~/.zshrc`:   
-```vim
-plugins=(
-        git
-        zsh-syntax-highlighting
-)
-```
-3. Source ~/.zshrc to take changes into account:   
-```bash
-source ~/.zshrc
-```
+  1. Clone this repository in oh-my-zsh's plugins directory:   
+  ```bash
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
+  2. Activate the plugin in `~/.zshrc`:   
+  ```vim
+  plugins=(
+          git
+          zsh-syntax-highlighting
+  )
+  ```
+  3. Source ~/.zshrc to take changes into account:   
+  ```bash
+  source ~/.zshrc
+  ```
 
 - ### 安装到`~/.zshrc`   
-1. Simply clone this repository and source the script:   
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-```   
-2. Then, enable syntax highlighting in the current interactive shell:   
-```bash
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-```   
-If git is not installed, download and extract a snapshot of the latest development tree from:    
-```vim
-https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-```   
-Note the `source` command must be **at the end of** `~/.zshrc`:   
-```bash
-source ~/.zshrc
-```
+  1. Simply clone this repository and source the script:   
+  ```bash
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+  ```   
+  2. Then, enable syntax highlighting in the current interactive shell:   
+  ```bash
+  source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ```   
+  If git is not installed, download and extract a snapshot of the latest development tree from:    
+  ```vim
+  https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+  ```   
+  Note the `source` command must be **at the end of** `~/.zshrc`:   
+  ```bash
+  source ~/.zshrc
+  ```
+
 ---
 ## VIM手动配置   
 
@@ -412,7 +413,7 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
  endtry
 ```
 
-升级vimrc:   
+**升级`vimrc`**:   
 ```bash
 cd ~/.vim_runtime
 git pull --rebase
