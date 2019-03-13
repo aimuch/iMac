@@ -10,7 +10,7 @@
   - [VIMRC**自动**配置VIM](src/shell_config.md#vimrc自动配置vim)
   - [安装**Vundle**管理插件](src/shell_config.md#安装vundle管理插件)
   - [VIM安装**YouCompleteMe**](src/shell_config.md#vim安装youcompleteme)
-  - [**vimrc最终配置**](src/shell_config.md#vimrc最终配置)
+  - [vimrc**最终配置**](src/shell_config.md#vimrc最终配置)
 - [**Tmux**](src/tmux_config.md#tmux)
   - [Tmux安装](src/tmux_config.md#tmux安装)
   - [Tmux**配置**](src/tmux_config.md#tmux配置)
