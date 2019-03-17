@@ -18,6 +18,7 @@
   - [删除右键菜单重复项目](src/faq/1.md)
   - [Mac删除/卸载自己安装的python](src/faq/2.md)
   - [~/.bash_profile原始配置](src/faq/3.md)
+  - [命令行安装程序的时候提示权限不够](src/faq/4.md)
 
 
 ## TODO
