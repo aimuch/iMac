@@ -38,11 +38,11 @@ chsh -s /bin/bash
 ## 安装oh-my-zsh
 - via curl   
     ```bash
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```   
 - via wget   
     ```bash
-    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     ```
 运行上述命令以后`~/.zshrc`会自动配置为:
 ```vim
