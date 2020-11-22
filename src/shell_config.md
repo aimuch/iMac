@@ -142,12 +142,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 ```
 
 升级oh-my-zsh
 ```bash
-upgrade_oh_my_zsh
+omz update
 ```
 ---
 ## 安装colorls   
