@@ -8,6 +8,7 @@
 - [安装**Vundle**管理插件](#安装vundle管理插件)
 - [VIM安装**YouCompleteMe**](#vim安装youcompleteme)
 - [vimrc**最终配置**](#vimrc最终配置)
+- [命令下启动vscode](#命令下启动vscode)
 
 
 
@@ -776,3 +777,10 @@ set scrolloff=3
 
 OK ，everything's ready ！   
 打开vim哈皮的coding吧。
+
+--
+## 命令下启动vscode
+打开vscode, 按住`command+shift+P`打开命令面板，输入`code`:   
+![cmd code](../img/cmd_code.png)   
+
+
