@@ -271,9 +271,11 @@ After:  ![png](../img/4_6.png)
   2. Activate the plugin in `~/.zshrc`:   
   ```vim
   plugins=(
-          git
-          zsh-syntax-highlighting
-  )
+            git
+            autojump
+            zsh-autosuggestions
+            zsh-syntax-highlighting
+          )
   ```
   3. Source ~/.zshrc to take changes into account:   
   ```bash
