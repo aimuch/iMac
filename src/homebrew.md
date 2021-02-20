@@ -70,6 +70,11 @@ Editing /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/foo.rb
 - brew-cask
 - wget
 - git
+- cloc
+- tree
+- autojump
+- ffmpeg
+- cmake
 - python3
   - 需要将`Python3`和`pip3`软连接到`/usr/local/bin/`下：    
     ```shell
