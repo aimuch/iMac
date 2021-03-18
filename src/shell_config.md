@@ -1,4 +1,4 @@
-# Mac下的shell配置   
+# Mac下的shell配置
 - [**zsh**设置为默认shell](#zsh设置为默认shell)
 - [安装**oh-my-zsh**](#安装oh-my-zsh)
 - [安装**colorls**](#安装colorls)
@@ -14,39 +14,39 @@
 
 ---
 ## zsh设置为默认shell
-查看当前已安装shells：   
-```bash
+查看当前已安装shells：
+```sh
 cat /etc/shells
 ```
 
-更改mac默认shell为zsh:   
+更改mac默认shell为zsh:
 ```bash
 chsh -s /usr/local/bin/zsh
 ```
-更改zsh配置文件：   
-```bash
+更改zsh配置文件：
+```sh
 vim ~/.zshrc
 ```
-更改完配置记得运行：   
-```bash
+更改完配置记得运行：
+```sh
 source ~/.zshrc
-``` 
-还原默认shell：   
-```bash
+```
+还原默认shell：
+```sh
 chsh -s /bin/bash
 ```
 ---
 ## 安装oh-my-zsh
-- via curl   
+- via curl
     ```bash
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```   
-- via wget   
+    ```
+- via wget
     ```bash
     sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     ```
 运行上述命令以后`~/.zshrc`会自动配置为:
-```vim
+```sh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -149,40 +149,56 @@ source $ZSH/oh-my-zsh.sh
 ```bash
 omz update
 ```
+
+设置golang环境:
+```sh
+# GO PATH
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+```
 ---
-## 安装colorls   
-*项目GitHub地址: https://github.com/athityakumar/colorls*    
+## 安装colorls
+*项目GitHub地址: https://github.com/athityakumar/colorls*
 
-**先上效果图**:    
-![png](../img/colorls.png)    
+**先上效果图**:
+![png](../img/colorls.png)
 
-#### 安装    
-1. `Mac`检查`Ruby`版本 (preferably, version > 2.1)    
-    默认情况下，`Mac OS X`系统已经安装好 `Ruby`，在命令行下可以直接通过以下命令，确认系统`Ruby`的版本信息:      
-    ```shell
+#### 安装
+1. `Mac`检查`Ruby`版本 (preferably, version > 2.1)
+    默认情况下，`Mac OS X`系统已经安装好 `Ruby`，在命令行下可以直接通过以下命令，确认系统`Ruby`的版本信息:
+    ```sh
     ruby --version
     ```
-    若系统自带的`Ruby`版本不符合`>2.1`上述要求，推荐使用`homebrew`来安装、管理`Ruby`的版本:    
-    ```shell
+    若系统自带的`Ruby`版本不符合`>2.1`上述要求，推荐使用`homebrew`来安装、管理`Ruby`的版本:
+    ```sh
     brew update
     brew install ruby
     echo '# Ruby installed by Homebrew' >> ~/.zshrc
     echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
     ```
-    ![ruby](../img/ruby.png)    
-    ![ruby](../img/ruby1.png)    
-    ![ruby](../img/ruby2.png)    
-    ![png](../img/colorls1.png)     
+    ![ruby](../img/ruby.png)
+    ![ruby](../img/ruby1.png)
+    ![ruby](../img/ruby2.png)
+    ![png](../img/colorls1.png)
 
 2. **安装字体**并设置`iTerm2`的显示字体，否则`icon`显示不全， 推荐`powerline nerd-font`。 可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。
 
-    *Note for `iTerm2` users - Please enable the **Nerd Font** at `iTerm2 > Preferences > Profiles > Text > Non-ASCII font > mononoki Nerd Font`.*    
-    ![iTerm2](../img/iTerm2.png)    
+    *Note for `iTerm2` users - Please enable the **Nerd Font** at `iTerm2 > Preferences > Profiles > Text > Non-ASCII font > mononoki Nerd Font`.*
+    ![iTerm2](../img/iTerm2.png)
 
-3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：   
+3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：
     ```shell
     gem install colorls
-    ```    
+    ```
     ![colorls](../img/colorls1.png)
 
 4. Enable tab completion for flags by entering following line to your shell configuration file (`~/.bashrc` or `~/.zshrc`) :
@@ -190,44 +206,44 @@ omz update
     source $(dirname $(gem which colorls))/tab_complete.sh
     ```
 
-#### 配置colorls环境    
-配置`Bash`或`Zsh`环境，这里以`Zsh`配置为例:    
-进入`~/.zshrc`配置文件:    
+#### 配置colorls环境
+配置`Bash`或`Zsh`环境，这里以`Zsh`配置为例:
+进入`~/.zshrc`配置文件:
 ```shell
 vim ~/.zshrc
 ```
-在文件末追加以下内容:    
-```shell
+在文件末追加以下内容:
+```sh
 # Colorls
 PATH=$PATH:$(ruby -e 'puts Gem.bindir')
-```    
-在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**ls别名**来替代`colorls`:    
+```
+在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**ls别名**来替代`colorls`:
 ```shell
 alias ls='colorls'
 alias ll='colorls -lA --report'
 alias lc='colorls -lA --sd'
 ```
-使其生效:    
+使其生效:
 ```shell
 source ~/.zshrc
-```   
+```
 
 #### 安装过程中遇到的问题
-在安装的过程中遇到`Zsh`不识别`colorls`命令:   
-![colorls-error](../img/colorls-error.png)     
-但是运行`/usr/local/lib/ruby/gems/2.6.0/gems/colorls-1.1.1/exe/colorls`是可以的：    
-![colorls2](../img/colorls2.png)    
-临时的解决方法是(上面的`colorls配置`已经彻底解决该问题，以下为当时的心路历程,😂):   
+在安装的过程中遇到`Zsh`不识别`colorls`命令:
+![colorls-error](../img/colorls-error.png)
+但是运行`/usr/local/lib/ruby/gems/2.6.0/gems/colorls-1.1.1/exe/colorls`是可以的：
+![colorls2](../img/colorls2.png)
+临时的解决方法是(上面的`colorls配置`已经彻底解决该问题，以下为当时的心路历程,😂):
 ```shell
 #cp /usr/local/lib/ruby/gems/2.6.0/gems/colorls-1.1.1/exe/colorls /usr/local/opt/ruby/bin/
 cp /usr/local/lib/ruby/gems/2.6.0/bin/colorls /usr/local/opt/ruby/bin/
-```   
-![colorls-error1](../img/colorls-error1.png)    
-**经过跟作者的沟通原来是没有将`Gem.bindir`加入环境变量中， 上面`colorls配置`中已经添加，彻底解决了该问题**：    
+```
+![colorls-error1](../img/colorls-error1.png)
+**经过跟作者的沟通原来是没有将`Gem.bindir`加入环境变量中， 上面`colorls配置`中已经添加，彻底解决了该问题**：
 ```shell
 echo 'export ATH=$PATH:$(ruby -e 'puts Gem.bindir')"' >> ~/.zshrc
 ```
-**[以下为作者的回答](https://github.com/athityakumar/colorls/issues/264)**     
+**[以下为作者的回答](https://github.com/athityakumar/colorls/issues/264)**
 > @aimuch as I already said, you need to ensure your shell is able to find the colorls script. You should add the `Gem.bindir` directory to your `PATH` environment variable in order to run scripts from any installed gem.
 > Look at the output of `gem environment`. The directory mentioned in `EXECUTABLE DIRECTORY` should be also listed in `SHELL PATH`.
 > Add this to your shell init file:
@@ -236,40 +252,40 @@ echo 'export ATH=$PATH:$(ruby -e 'puts Gem.bindir')"' >> ~/.zshrc
 #### 升级colorls
 ```shell
 gem update colorls
-```    
+```
 #### 卸载colorls
 ```shell
 gem uninstall colorls
-```   
+```
 
-#### 参考资料  
+#### 参考资料
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
 
 
 ---
-## 安装zsh-syntax-highlighting   
-*已知命令语法高亮*  
-GitHub地址:https://github.com/zsh-users/zsh-syntax-highlighting   
+## 安装zsh-syntax-highlighting
+*已知命令语法高亮*
+GitHub地址:https://github.com/zsh-users/zsh-syntax-highlighting
 
-安装后效果如下:   
-Before: ![png](../img/4_1.png)   
-After:  ![png](../img/4_2.png)   
+安装后效果如下:
+Before: ![png](../img/4_1.png)
+After:  ![png](../img/4_2.png)
 
-Before: ![png](../img/4_3.png)   
-After:  ![png](../img/4_4.png)   
+Before: ![png](../img/4_3.png)
+After:  ![png](../img/4_4.png)
 
-Before: ![png](../img/4_5.png)   
-After:  ![png](../img/4_6.png)   
+Before: ![png](../img/4_5.png)
+After:  ![png](../img/4_6.png)
 
 
 ### **安装方法**:
-- ### 安装到`Oh-my-zsh`   
-  1. Clone this repository in oh-my-zsh's plugins directory:   
+- ### 安装到`Oh-my-zsh`
+  1. Clone this repository in oh-my-zsh's plugins directory:
   ```bash
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
   ```
-  2. Activate the plugin in `~/.zshrc`:   
-  ```vim
+  2. Activate the plugin in `~/.zshrc`:
+  ```sh
   plugins=(
             git
             autojump
@@ -277,37 +293,37 @@ After:  ![png](../img/4_6.png)
             zsh-syntax-highlighting
           )
   ```
-  3. Source ~/.zshrc to take changes into account:   
+  3. Source ~/.zshrc to take changes into account:
   ```bash
   source ~/.zshrc
   ```
 
-- ### 安装到`~/.zshrc`   
-  1. Simply clone this repository and source the script:   
+- ### 安装到`~/.zshrc`
+  1. Simply clone this repository and source the script:
   ```bash
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
   echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-  ```   
-  2. Then, enable syntax highlighting in the current interactive shell:   
+  ```
+  2. Then, enable syntax highlighting in the current interactive shell:
   ```bash
   source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  ```   
-  If git is not installed, download and extract a snapshot of the latest development tree from:    
+  ```
+  If git is not installed, download and extract a snapshot of the latest development tree from:
   ```vim
   https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-  ```   
-  Note the `source` command must be **at the end of** `~/.zshrc`:   
+  ```
+  Note the `source` command must be **at the end of** `~/.zshrc`:
   ```bash
   source ~/.zshrc
   ```
 
 ---
-## VIM手动配置   
+## VIM手动配置
 
-基础平台：`MacBook Pro` ，原生`shell`支持.   
-Mac自带的是`vi`，需要安装`vim`, `homebrew`安装: `brew install vim`   
-配置文件在用户目录下`~/.vimrc`,如果没有，就自己创建一个: `vim ~/.vimrc` 然后添加以下内容:   
-```vim   
+基础平台：`MacBook Pro` ，原生`shell`支持.
+Mac自带的是`vi`，需要安装`vim`, `homebrew`安装: `brew install vim`
+配置文件在用户目录下`~/.vimrc`,如果没有，就自己创建一个: `vim ~/.vimrc` 然后添加以下内容:
+```vim
 " 显示行号
 set number
 " 显示标尺
@@ -375,7 +391,7 @@ set completeopt=longest,menu
 set noeb
 " 自动保存
 set autowrite
-" 突出显示当前行 
+" 突出显示当前行
 set cursorline
 " 突出显示当前列
 set cursorcolumn
@@ -391,7 +407,7 @@ set clipboard+=unnamed
 set autoread
 " 顶部底部保持3行距离
 set scrolloff=3
-```   
+```
 
 ---
 ## VIMRC自动配置VIM
@@ -400,7 +416,7 @@ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
-安装后`~/.vimrc`会自动配置为：   
+安装后`~/.vimrc`会自动配置为：
 ```vim
  set runtimepath+=~/.vim_runtime
 
@@ -415,26 +431,26 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
  endtry
 ```
 
-**升级`vimrc`**:   
+**升级`vimrc`**:
 ```bash
 cd ~/.vim_runtime
 git pull --rebase
 ```
 
 ---
-## 安装Vundle管理插件 
-官方GitHub地址: https://github.com/VundleVim/Vundle.vim    
+## 安装Vundle管理插件
+官方GitHub地址: https://github.com/VundleVim/Vundle.vim
 
 ### 快速开始
-- 介绍:    
-安装需要`Git`,触发g`it clone`,默认将每一个指定特定格式插件的仓库复制到`~/.vim/bundle/`. 搜索需要`Curl`支持.   
+- 介绍:
+安装需要`Git`,触发g`it clone`,默认将每一个指定特定格式插件的仓库复制到`~/.vim/bundle/`. 搜索需要`Curl`支持.
 
 - 初始安装 Vundle:
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
-- 配置插件 :   
-请将以下加在 `.vimrc` 方可使用`Vundle`. 删掉你不需要的插件, 这些只是用做示例:    
+- 配置插件 :
+请将以下加在 `.vimrc` 方可使用`Vundle`. 删掉你不需要的插件, 这些只是用做示例:
 ```vim
 set nocompatible              " 去除VI一致性,必须
 filetype off                  " 必须
@@ -484,28 +500,28 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 "
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
-```   
+```
 
-- 安装插件:    
-运行 `vim` 再运行 : `PluginInstall`   
-更新 `vim` 插件: `PluginUpdate`   
-清理未使用都插件:  `PluginClean`    
+- 安装插件:
+运行 `vim` 再运行 : `PluginInstall`
+更新 `vim` 插件: `PluginUpdate`
+清理未使用都插件:  `PluginClean`
 
 ---
 ## VIM安装YouCompleteMe
-上一步已经在`Vundle`中通过`Plugin 'valloric/youcompleteme'`下载好插件，但是需要手动编译安装:    
+上一步已经在`Vundle`中通过`Plugin 'valloric/youcompleteme'`下载好插件，但是需要手动编译安装:
 
-### (1) 进入YouCompleteMe文件夹下    
+### (1) 进入YouCompleteMe文件夹下
 ```bash
 cd  ~/.vim/bundle/YouCompleteMe/
-```    
+```
 
 ### (2) 编译
 ```bash
 ./install.py  --clang-completer --go-completer --ts-completer
-``` 
-参数--clang-completer是为了支持C/C++的补全，--go-completer是为了支持Go的补全, --ts-completer是为了支持JavaScript的补全。编译过程比较长，耐心等待。    
-安装的时候有报错信息：    
+```
+参数--clang-completer是为了支持C/C++的补全，--go-completer是为了支持Go的补全, --ts-completer是为了支持JavaScript的补全。编译过程比较长，耐心等待。
+安装的时候有报错信息：
 ```bash
 /Library/Developer/CommandLineTools/usr/bin/ranlib: file: libBoostParts.a(windows_file_codecvt.cpp.o) has no symbols
 /Library/Developer/CommandLineTools/usr/bin/ranlib: file: libBoostParts.a(icu.cpp.o) has no symbols
@@ -522,13 +538,13 @@ cd  ~/.vim/bundle/YouCompleteMe/
 /Library/Developer/CommandLineTools/usr/bin/ranlib: file: libBoostParts.a(w32_regex_traits.cpp.o) has no symbols
 /Library/Developer/CommandLineTools/usr/bin/ranlib: file: libBoostParts.a(winstances.cpp.o) has no symbols
 ```
-目前还没找到解决方法，不过不影响使用。    
+目前还没找到解决方法，不过不影响使用。
 
-### (3) 找到文件.ycm_extra_conf.py在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:   
+### (3) 找到文件.ycm_extra_conf.py在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:
 ```bash
 cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 ```
-`ls -a` 即可看到。    
+`ls -a` 即可看到。
 
 自行在`YoucompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:
 ```bash
@@ -543,14 +559,14 @@ cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
-let g:syntastic_ignore_files=[".*\.py$"] 
+let g:syntastic_ignore_files=[".*\.py$"]
 " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 " 开启语义补全
 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
 "let g:ycm_key_invoke_completion = '<M-;>'
 " 设置转到定义处的快捷键为ALT+G，未测出效果
-"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 "关键字补全
 "let g:ycm_seed_identifiers_with_syntax = 1
 " 在接受补全后不分裂出一个窗口显示接受的项
@@ -571,8 +587,8 @@ let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 " let g:ycm_use_ultisnips_completer=0
-```   
-上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。    
+```
+上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。
  **注**：如果没有在第(3)步中自己创建`cpp/ycm`目录拷贝`.ycm_extra_conf.py`文件，则需要将第一句中的路径改为全局配置文件所在的具体路径，如下：
 ```
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
@@ -659,14 +675,14 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
-let g:syntastic_ignore_files=[".*\.py$"] 
+let g:syntastic_ignore_files=[".*\.py$"]
 " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 " 开启语义补全
 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
 "let g:ycm_key_invoke_completion = '<M-;>'
 " 设置转到定义处的快捷键为ALT+G，未测出效果
-"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 "关键字补全
 "let g:ycm_seed_identifiers_with_syntax = 1
 " 在接受补全后不分裂出一个窗口显示接受的项
@@ -758,7 +774,7 @@ set completeopt=longest,menu
 set noeb
 " 自动保存
 set autowrite
-" 突出显示当前行 
+" 突出显示当前行
 set cursorline
 " 突出显示当前列
 set cursorcolumn
@@ -775,14 +791,12 @@ set autoread
 " 顶部底部保持3行距离
 set scrolloff=3
 " >>>>>>>>> add by ANDY
-```   
+```
 
-OK ，everything's ready ！   
+OK ，everything's ready ！
 打开vim哈皮的coding吧。
 
 --
 ## 命令下启动vscode
-打开vscode, 按住`command+shift+P`打开命令面板，输入`code`:   
-![cmd code](../img/cmd_code.png)   
-
-
+打开vscode, 按住`command+shift+P`打开命令面板，输入`code`:
+![cmd code](../img/cmd_code.png)
