@@ -15,6 +15,7 @@
 - [**Tmux**](src/tmux_config.md#tmux)
   - [Tmux安装](src/tmux_config.md#tmux安装)
   - [Tmux**配置**](src/tmux_config.md#tmux配置)
+- [切换Python版本](src/python.md#切换python版本)
 - **Mac FAQ**
   - [删除右键菜单重复项目](src/faq/1.md)
   - [Mac删除/卸载自己安装的python](src/faq/2.md)
