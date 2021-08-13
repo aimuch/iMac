@@ -1,6 +1,9 @@
 # Mac Config
 *记录Mac日常使用情况*
 - [**Homebrew**](src/homebrew.md)
+  - [安装Homebrew](src/homebrew.md#安装Homebrew)
+  - [Homebrew装机必备包](src/homebrew.md#homebrew装机必备包)
+  - [Homebrew常用命令](src/homebrew.md#homebrew常用命令)
 - [**shell**](src/shell_config.md)
   - [**zsh**设置为默认shell](src/shell_config.md#zsh设置为默认shell)
   - [安装**oh-my-zsh**](src/shell_config.md#安装oh-my-zsh)

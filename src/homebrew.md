@@ -1,15 +1,20 @@
 # Homebrew
 > *Homebrew是macOS缺失的软件包的管理器*   
 
+- [安装Homebrew](#安装Homebrew)
+- [Homebrew装机必备包](#homebrew装机必备包)
+- [Homebrew常用命令](#homebrew常用命令)
+
+---
 Homebrew官方网址： https://brew.sh/   
 
-## 安装 Homebrew
+## 安装Homebrew
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```   
 将以上命令粘贴至终端。   
 
-## Homebrew 能干什么?   
+### Homebrew 能干什么?   
 
 使用 Homebrew 安装 Apple 没有预装但 你需要的东西:   
 ```bash
@@ -30,13 +35,13 @@ bin/wget -> ../Cellar/wget/1.16.1/bin/wget
 Homebrew 不会将文件安装到它本身目录之外，所以您可将 Homebrew 安装到任意位置。   
 
 轻松创建你自己的 Homebrew 包:   
-```
+```shell
 $ brew create https://foo.com/bar-1.0.tgz
 Created /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/bar.rb
 ```
 
 完全基于 Git 和 ruby，所以自由修改的同时你仍可以轻松撤销你的变更或与上游更新合并:   
-```basj
+```shell
 $ brew edit wget # 使用 $EDITOR 编辑!
 ```
 
@@ -61,12 +66,12 @@ $ brew cask install firefox
 ```
 
 Making a cask is as simple as creating a formula.   
-```
+```shell
 $ brew cask create foo
 Editing /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/foo.rb
 ```
 
-## Homebrew 装机必备包
+## Homebrew装机必备包
 - brew-cask
 - wget
 - git
@@ -90,8 +95,13 @@ Editing /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/foo.rb
 - macvim
 - tmux
 - htop
+- gsed
+  ```shell
+  # gsed, brew install gsed
+  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  ```
 
-## Homebrew 常用命令    
+## Homebrew常用命令    
 - `brew shellenv`    
   Prints export statements - run them in a shell and this installation of Homebrew will be included into your PATH, MANPATH and INFOPATH.    
 
