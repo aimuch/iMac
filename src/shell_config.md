@@ -1,8 +1,10 @@
 # Mac下的shell配置
 - [**zsh**设置为默认shell](#zsh设置为默认shell)
 - [安装**oh-my-zsh**](#安装oh-my-zsh)
-- [安装**colorls**](#安装colorls)
+- [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
 - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)
+- [安装**scm_breeze**](#安装scm-breeze)
+- [安装**colorls**](#安装colorls)
 - [VIM**手动**配置](#vim手动配置)
 - [VIMRC**自动**配置VIM](#vimrc自动配置vim)
 - [安装**Vundle**管理插件](#安装vundle管理插件)
@@ -175,6 +177,141 @@ alias la='ls -A'
 alias l='ls -CF'
 ```
 ---
+## 安装zsh-autosuggestions
+- **Oh My Zsh**
+    1. Clone this repository into $ZSH_CUSTOM/plugins (by default `~/.oh-my-zsh/custom/plugins`):
+        ```shell
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        ```
+    2. Add the plugin to the list of plugins for Oh My Zsh to load (`inside ~/.zshrc`):
+        ```vim
+        plugins=(
+                    git
+                    zsh-autosuggestions
+                )
+        ```
+    3. Start a new terminal session.
+
+- **Manual (Git Clone)**
+    1. Clone this repository somewhere on your machine. This guide will assume` ~/.zsh/zsh-autosuggestions`:
+        ```shell
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+        ```
+    2. Add the following to your `.zshrc`:
+        ```shell
+        source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+        ```
+    3. Start a new terminal session.
+---
+## 安装zsh-syntax-highlighting
+*已知命令语法高亮*
+GitHub地址:https://github.com/zsh-users/zsh-syntax-highlighting
+
+安装后效果如下:
+Before: ![png](../img/4_1.png)
+After:  ![png](../img/4_2.png)
+
+Before: ![png](../img/4_3.png)
+After:  ![png](../img/4_4.png)
+
+Before: ![png](../img/4_5.png)
+After:  ![png](../img/4_6.png)
+
+
+### **安装方法**:
+- ### 安装到`Oh-my-zsh`
+  1. Clone this repository in oh-my-zsh's plugins directory:
+  ```bash
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
+  2. Activate the plugin in `~/.zshrc`:
+  ```sh
+  plugins=(
+            git
+            zsh-autosuggestions
+            zsh-syntax-highlighting
+          )
+  ```
+  3. Source ~/.zshrc to take changes into account:
+  ```bash
+  source ~/.zshrc
+  ```
+
+- ### 安装到`~/.zshrc`
+  1. Simply clone this repository and source the script:
+  ```bash
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+  ```
+  2. Then, enable syntax highlighting in the current interactive shell:
+  ```bash
+  source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ```
+  If git is not installed, download and extract a snapshot of the latest development tree from:
+  ```vim
+  https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+  ```
+  Note the `source` command must be **at the end of** `~/.zshrc`:
+  ```bash
+  source ~/.zshrc
+  ```
+---
+### 安装scm_breeze
+```bash
+git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
+~/.scm_breeze/install.sh
+source ~/.bashrc   # or source "${ZDOTDIR:-$HOME}/.zshrc"
+```
+The install script creates required default configs and adds the following line to your `.bashrc` or `.zshrc`:
+```bash
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+```
+**Note**: You need to install ruby for some SCM Breeze commands to work. This also improves performance. See `ruby-lang.org` for installation information.
+Mac上安装有执行`ll`会遇到以下问题：    
+![scm_breeze_error](../img/scm_breeze_install_mac_error.png)    
+[解决方法是](https://stackoverflow.com/questions/57972341/how-to-install-and-use-gnu-ls-on-macos/57973942#57973942)：   
+This has nothing to do with `bash`. Command `ls` is not a builtin of `bash`.   
+
+macOS is based on the Unix operating system. Some of its basic commands are BSD flavored. The `--group-directories-first` option you want is available in GNU ls only. All you need is a GNU flavored ls.   
+
+Solution: install `coreutils`, in which GNU `ls` is included.   
+```shell
+brew install coreutils
+```
+Add the following code into `~/.zshrc` or `~/.bash_profile` , to prioritize the `ls` command and other GNU flavored commands over the builtin BSD flavored command in macOS.
+```vim
+# Make all GNU flavor commands available, may override same-name BSD flavor commands
+# For x86 Mac
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+
+# For M1 Mac
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+```
+If you only want the GNU ls but not other GNU flavored commands. Don't add the above content, but create an alias in `~/.zshrc` or `~/.bash_profile`.
+```vim
+# For x86 Mac
+alias ls="/usr/local/opt/coreutils/libexec/gnubin/ls"
+
+# For M1 Mac
+alias ls="/opt/homebrew/opt/coreutils/libexec/gnubin/ls"
+```
+
+Here's all commands brought by coreutils.
+```shell
+❯ ls /usr/local/opt/coreutils/libexec/gnubin
+'['	    chmod    dd		 expr	  install   mkfifo   od         readlink    sha384sum   stty	  tr	     uptime
+ b2sum	    chown    df		 factor   join	    mknod    paste      realpath    sha512sum   sum	  true	     users
+ base32     chroot   dir	 false	  kill	    mktemp   pathchk    rm	    shred       sync	  truncate   vdir
+ base64     cksum    dircolors	 fmt	  link	    mv	     pinky      rmdir	    shuf        tac	  tsort      wc
+ basename   comm     dirname	 fold	  ln	    nice     pr         runcon	    sleep       tail	  tty	     who
+ basenc     cp	     du		 groups   logname   nl	     printenv   seq	    sort        tee	  uname      whoami
+ cat	    csplit   echo	 head	  ls	    nohup    printf     sha1sum     split       test	  unexpand   yes
+ chcon	    cut      env	 hostid   md5sum    nproc    ptx        sha224sum   stat        timeout   uniq
+ chgrp	    date     expand	 id	  mkdir     numfmt   pwd        sha256sum   stdbuf      touch	  unlink
+```
+---
 ## 安装colorls
 *项目GitHub地址: https://github.com/athityakumar/colorls*
 
@@ -269,62 +406,6 @@ gem uninstall colorls
 
 #### 参考资料
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
-
-
----
-## 安装zsh-syntax-highlighting
-*已知命令语法高亮*
-GitHub地址:https://github.com/zsh-users/zsh-syntax-highlighting
-
-安装后效果如下:
-Before: ![png](../img/4_1.png)
-After:  ![png](../img/4_2.png)
-
-Before: ![png](../img/4_3.png)
-After:  ![png](../img/4_4.png)
-
-Before: ![png](../img/4_5.png)
-After:  ![png](../img/4_6.png)
-
-
-### **安装方法**:
-- ### 安装到`Oh-my-zsh`
-  1. Clone this repository in oh-my-zsh's plugins directory:
-  ```bash
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  ```
-  2. Activate the plugin in `~/.zshrc`:
-  ```sh
-  plugins=(
-            git
-            autojump
-            zsh-autosuggestions
-            zsh-syntax-highlighting
-          )
-  ```
-  3. Source ~/.zshrc to take changes into account:
-  ```bash
-  source ~/.zshrc
-  ```
-
-- ### 安装到`~/.zshrc`
-  1. Simply clone this repository and source the script:
-  ```bash
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-  ```
-  2. Then, enable syntax highlighting in the current interactive shell:
-  ```bash
-  source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  ```
-  If git is not installed, download and extract a snapshot of the latest development tree from:
-  ```vim
-  https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-  ```
-  Note the `source` command must be **at the end of** `~/.zshrc`:
-  ```bash
-  source ~/.zshrc
-  ```
 
 ---
 ## VIM手动配置
