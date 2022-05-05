@@ -1,5 +1,8 @@
-# Mac Config
+# Mac
 *记录Mac日常使用情况*
+- [**Mac装机必备软件**](src/mac_sw.md#mac装机必备软件)
+  - []()
+  - []()
 - [**Homebrew**](src/homebrew.md)
   - [安装Homebrew](src/homebrew.md#安装Homebrew)
   - [Homebrew装机必备包](src/homebrew.md#homebrew装机必备包)
